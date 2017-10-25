@@ -13,10 +13,27 @@
 		AB3476461FA084780055F69F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB3476451FA084780055F69F /* Assets.xcassets */; };
 		AB3476491FA084780055F69F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3476471FA084780055F69F /* LaunchScreen.storyboard */; };
 		AB34764C1FA084780055F69F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB34764B1FA084780055F69F /* main.m */; };
+		AB3476531FA085ED0055F69F /* Hello.java in Sources */ = {isa = PBXBuildFile; fileRef = AB3476521FA085ED0055F69F /* Hello.java */; };
+		AB3476571FA091310055F69F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB3476561FA091310055F69F /* Security.framework */; };
+		AB3476591FA093600055F69F /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AB3476581FA0935F0055F69F /* libiconv.tbd */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		AB3476541FA08FD20055F69F /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = sourcecode.java;
+			isEditable = 1;
+			outputFiles = (
+				"${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}.h",
+				"${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}.m",
+			);
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME is not correctly defined, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${DERIVED_FILES_DIR} -sourcepath \"${PROJECT_DIR}/HelloJavaBridge/\" --no-package-directories -g ${INPUT_FILE_PATH};";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXFileReference section */
-		AB3476391FA084780055F69F /* HelloBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB3476391FA084780055F69F /* HelloJavaBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloJavaBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB34763C1FA084780055F69F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AB34763D1FA084780055F69F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		AB34763F1FA084780055F69F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -26,6 +43,9 @@
 		AB3476481FA084780055F69F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB34764A1FA084780055F69F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB34764B1FA084780055F69F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AB3476521FA085ED0055F69F /* Hello.java */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.java; path = Hello.java; sourceTree = "<group>"; };
+		AB3476561FA091310055F69F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		AB3476581FA0935F0055F69F /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB3476591FA093600055F69F /* libiconv.tbd in Frameworks */,
+				AB3476571FA091310055F69F /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,20 +64,21 @@
 		AB3476301FA084780055F69F = {
 			isa = PBXGroup;
 			children = (
-				AB34763B1FA084780055F69F /* HelloBridge */,
+				AB34763B1FA084780055F69F /* HelloJavaBridge */,
 				AB34763A1FA084780055F69F /* Products */,
+				AB3476551FA091310055F69F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		AB34763A1FA084780055F69F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AB3476391FA084780055F69F /* HelloBridge.app */,
+				AB3476391FA084780055F69F /* HelloJavaBridge.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AB34763B1FA084780055F69F /* HelloBridge */ = {
+		AB34763B1FA084780055F69F /* HelloJavaBridge */ = {
 			isa = PBXGroup;
 			children = (
 				AB34763C1FA084780055F69F /* AppDelegate.h */,
@@ -67,28 +90,39 @@
 				AB3476471FA084780055F69F /* LaunchScreen.storyboard */,
 				AB34764A1FA084780055F69F /* Info.plist */,
 				AB34764B1FA084780055F69F /* main.m */,
+				AB3476521FA085ED0055F69F /* Hello.java */,
 			);
-			path = HelloBridge;
+			path = HelloJavaBridge;
+			sourceTree = "<group>";
+		};
+		AB3476551FA091310055F69F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AB3476581FA0935F0055F69F /* libiconv.tbd */,
+				AB3476561FA091310055F69F /* Security.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AB3476381FA084780055F69F /* HelloBridge */ = {
+		AB3476381FA084780055F69F /* HelloJavaBridge */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AB34764F1FA084780055F69F /* Build configuration list for PBXNativeTarget "HelloBridge" */;
+			buildConfigurationList = AB34764F1FA084780055F69F /* Build configuration list for PBXNativeTarget "HelloJavaBridge" */;
 			buildPhases = (
 				AB3476351FA084780055F69F /* Sources */,
 				AB3476361FA084780055F69F /* Frameworks */,
 				AB3476371FA084780055F69F /* Resources */,
 			);
 			buildRules = (
+				AB3476541FA08FD20055F69F /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
-			name = HelloBridge;
+			name = HelloJavaBridge;
 			productName = HelloBridge;
-			productReference = AB3476391FA084780055F69F /* HelloBridge.app */;
+			productReference = AB3476391FA084780055F69F /* HelloJavaBridge.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -106,7 +140,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AB3476341FA084780055F69F /* Build configuration list for PBXProject "HelloBridge" */;
+			buildConfigurationList = AB3476341FA084780055F69F /* Build configuration list for PBXProject "HelloJavaBridge" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -119,7 +153,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AB3476381FA084780055F69F /* HelloBridge */,
+				AB3476381FA084780055F69F /* HelloJavaBridge */,
 			);
 		};
 /* End PBXProject section */
@@ -144,6 +178,7 @@
 			files = (
 				AB3476411FA084780055F69F /* ViewController.m in Sources */,
 				AB34764C1FA084780055F69F /* main.m in Sources */,
+				AB3476531FA085ED0055F69F /* Hello.java in Sources */,
 				AB34763E1FA084780055F69F /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,8 +315,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2658J76W2S;
-				INFOPLIST_FILE = HelloBridge/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = "${J2OBJC_HOME}/frameworks";
+				HEADER_SEARCH_PATHS = "${J2OBJC_HOME}/include";
+				INFOPLIST_FILE = "$(SRCROOT)/HelloJavaBridge/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				J2OBJC_HOME = "../../j2objc-2.0.5";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "${J2OBJC_HOME}/lib";
+				OTHER_LDFLAGS = (
+					"-ljre_emul",
+					"-ljre_zip",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.HelloBridge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -294,8 +338,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2658J76W2S;
-				INFOPLIST_FILE = HelloBridge/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = "${J2OBJC_HOME}/frameworks";
+				HEADER_SEARCH_PATHS = "${J2OBJC_HOME}/include";
+				INFOPLIST_FILE = "$(SRCROOT)/HelloJavaBridge/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				J2OBJC_HOME = "../../j2objc-2.0.5";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "${J2OBJC_HOME}/lib";
+				OTHER_LDFLAGS = (
+					"-ljre_emul",
+					"-ljre_zip",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.HelloBridge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -305,7 +358,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AB3476341FA084780055F69F /* Build configuration list for PBXProject "HelloBridge" */ = {
+		AB3476341FA084780055F69F /* Build configuration list for PBXProject "HelloJavaBridge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AB34764D1FA084780055F69F /* Debug */,
@@ -314,7 +367,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AB34764F1FA084780055F69F /* Build configuration list for PBXNativeTarget "HelloBridge" */ = {
+		AB34764F1FA084780055F69F /* Build configuration list for PBXNativeTarget "HelloJavaBridge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AB3476501FA084780055F69F /* Debug */,
